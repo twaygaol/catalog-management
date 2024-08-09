@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@include('layouts.header')
 
 @section('content')
     <div class="carousel relative container mx-auto" style="max-width:1600px;">
