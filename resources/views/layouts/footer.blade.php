@@ -7,6 +7,16 @@
           <p class="py-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
           </p>
+          <div class="py-4">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.1414539947566!2d-122.08424938468108!3d37.42206597982347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba8b7f9b0b19%3A0xfaf9a5bdb42a5b29!2sGoogleplex!5e0!3m2!1sen!2sus!4v1641857845104!5m2!1sen!2sus"
+              width="100%"
+              height="200"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
       </div>
       <div class="flex w-full lg:w-1/2 lg:justify-end lg:text-right mt-6 md:mt-0">

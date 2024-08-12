@@ -3,24 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
 
-    // publiC function index()
-    // {
-    //     $products = Product::all();
-    //     return view('pages.catalog', compact('products'));
-    // }
-
-    public function index()
+    publiC function index()
     {
-        $products = [
-            (object)['name' => 'Product 1', 'price' => '9.99', 'image' => 'https://images.unsplash.com/photo-1550837368-6594235de85c'],
-            (object)['name' => 'Product 2', 'price' => '9.99', 'image' => 'https://images.unsplash.com/photo-1551431009-a802eeec77b1'],
-        ];
+        $categories = Category::all();
+        $products = Product::all(); 
+        return view('product-grid', compact('products', 'categories'));
+    }
 
-        return view('product-grid', compact('products'));
+
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('product.show', compact('product'));
+    }
+
+    public function showByCategory($categoryId)
+    {
+        $categories = Category::all(); 
+        $category = Category::findOrFail($categoryId); 
+        $products = $category->products; 
+
+        return view('product-grid', compact('products', 'categories'));
     }
 }

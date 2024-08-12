@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -29,9 +30,10 @@ class ProductResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->label('Nama Produk'),
-                Textarea::make('description')
+                Select::make('category_id')
+                    ->relationship('category', 'name')
                     ->required()
-                    ->label('Deskripsi Produk'),
+                    ->label('Kategori Produk'),
                 TextInput::make('price')
                     ->numeric()
                     ->required()
@@ -41,10 +43,9 @@ class ProductResource extends Resource
                     ->image()
                     ->label('Gambar Produk')
                     ->required(),
-                Select::make('category_id')
-                    ->relationship('category', 'name')
+                RichEditor::make('description') 
                     ->required()
-                    ->label('Kategori Produk'),
+                    ->label('Deskripsi Produk'),
             ]);
     }
 
@@ -53,12 +54,10 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('price')
-                    ->money('IDR', true),
-                Tables\Columns\ImageColumn::make('image')
-                    ->label('Gambar Produk'),
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Kategori'),
+                Tables\Columns\TextColumn::make('price')
+                    ->money('IDR', true),
             ])
             ->filters([
                 //
